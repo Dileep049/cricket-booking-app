@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cricket Ground Booking</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Cricket Ground Booking</h2>
+
+<input type="text" id="name" placeholder="Your Name">
+<input type="date" id="date">
+<input type="time" id="time">
+<button onclick="book()">Book Now</button>
+
+<h3>All Bookings</h3>
+<ul id="list"></ul>
+
+<script src="script.js"></script>
+</body>
+</html>
