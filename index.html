@@ -1,20 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Cricket Ground Booking</title>
+  <title>CricBook</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h2>Cricket Ground Booking</h2>
+<!-- NAVBAR -->
+<nav>
+  <h2>CricBook</h2>
+  <button class="btn">Book Now</button>
+</nav>
 
-<input type="text" id="name" placeholder="Your Name">
-<input type="date" id="date">
-<input type="time" id="time">
-<button onclick="book()">Book Now</button>
+<!-- HERO SECTION -->
+<section class="hero">
+  <h1>Play Cricket at the <span>Best Grounds</span></h1>
+  <p>Discover and book premium cricket grounds near you</p>
 
-<h3>All Bookings</h3>
-<ul id="list"></ul>
+  <div class="search-box">
+    <input placeholder="Enter city">
+    <input type="date">
+    <select>
+      <option>Morning</option>
+      <option>Evening</option>
+      <option>Night</option>
+    </select>
+    <button>Search</button>
+  </div>
+</section>
+
+<!-- GROUNDS -->
+<h2 class="title">Available Grounds</h2>
+
+<div class="grounds">
+  <div class="card">
+    <img src="images/ground1.jpg">
+    <h3>ABC Cricket Ground</h3>
+    <p>₹500 / hour</p>
+    <button onclick="book()">Book</button>
+  </div>
+
+  <div class="card">
+    <img src="images/ground2.jpg">
+    <h3>City Sports Arena</h3>
+    <p>₹700 / hour</p>
+    <button onclick="book()">Book</button>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>
