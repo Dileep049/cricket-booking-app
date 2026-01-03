@@ -1,9 +1,77 @@
 body {
+  margin: 0;
   font-family: Arial;
-  padding: 20px;
+  background: #f5f5f5;
 }
 
-input, button {
-  margin: 5px;
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 40px;
+  background: white;
+}
+
+.btn {
+  background: green;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+}
+
+.hero {
+  height: 60vh;
+  background: url("images/ground1.jpg") center/cover;
+  color: white;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.hero span {
+  color: orange;
+}
+
+.search-box {
+  margin-top: 20px;
+}
+
+.search-box input, select {
+  padding: 10px;
+}
+
+.search-box button {
+  padding: 10px 20px;
+  background: green;
+  color: white;
+  border: none;
+}
+
+.title {
+  text-align: center;
+  margin: 30px;
+}
+
+.grounds {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  width: 250px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.card button {
+  width: 100%;
   padding: 8px;
+  background: green;
+  color: white;
+  border: none;
 }
