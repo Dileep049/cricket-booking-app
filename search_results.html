@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="search-bg">
+<div class="results-container" id="groundsList">
+         <div class="ground-card">
+            <img src="stadium.jpg" alt="Vijayawada ">
+            <div class="ground-info">
+                <h3>Indira Gandhi Stadium</h3>
+                <p>Location: Labbipet, Vijayawada</p>
+                <p class="price">Advance: ₹500 (Total: ₹2000)</p>
+                <button class="book-now" onclick="initiatePayment('Indira Gandhi Stadium', 500)">Book Now</button>
+            </div>
+        </div>
+
+        <div class="ground-card">
+            <img src="stadium.jpg" alt="Vijayawada ">
+            <div class="ground-info">
+                <h3>GO SPORTS</h3>
+                <p>Location: NUNNA, ARIGAPALLI</p>
+                <p class="price">Advance: ₹1500 (Total: ₹7000)</p>
+                <button class="book-now" onclick="initiatePayment('GO SPORTS', 1500)">Book Now</button>
+            </div>
+        </div>
+
+        <div class="ground-card">
+            <img src="stadium.jpg" alt="Cricket Ground">
+            <div class="ground-info">
+                <h3>VMC Cricket Ground</h3>
+                <p>Location: Ajit Singh Nagar</p>
+                <p class="price">Advance: ₹400 (Total: ₹1500)</p>
+                <button class="book-now" onclick="initiatePayment('VMC Ground', 400)">Book Now</button>
+            </div>
+        </div>
+
+    </div> <script>
+    function initiatePayment(groundName, advanceAmount) {
+        alert("Redirecting to Secure Payment Gateway for " + groundName + "...");
+        
+        setTimeout(function() {
+            alert("Payment of ₹" + advanceAmount + " Successful!");
+            alert("Our booking for " + groundName + " is completed! A confirmation message has been sent to your mobile.");
+            
+            
+            // window.location.href = "index.html";
+        }, 2000); 
+    }
+    </script>
+
+</body>
+</html>

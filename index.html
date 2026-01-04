@@ -1,53 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>CricBook</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav>
-  <h2>CricBook</h2>
-  <button class="btn">Book Now</button>
-</nav>
+<header>
+  <div class="logo">🏏 CricBook</div>
+  <nav>
+    <a href="#">Grounds</a>
+    <a href="#">How it Works</a>
+    <a href="#">Contact</a>
+    <button class="book-btn">Book Now</button>
+  </nav>
+</header>
 
-<!-- HERO SECTION -->
-<section class="hero">
+<section class="hero-bg">
   <h1>Play Cricket at the <span>Best Grounds</span></h1>
   <p>Discover and book premium cricket grounds near you</p>
 
-  <div class="search-box">
-    <input placeholder="Enter city">
-    <input type="date">
-    <select>
-      <option>Morning</option>
-      <option>Evening</option>
-      <option>Night</option>
-    </select>
-    <button>Search</button>
-  </div>
+  <form action="search_results.html" method="GET">
+    <div class="search-box">
+        <input type="text" placeholder="Enter city" required>
+        <input type="date" required>
+        <select>
+            <option>Morning</option>
+            <option>Afternoon</option>
+            <option>Evening</option>
+        </select>
+        <button type="submit">Search</button>
+    </div>
+</form>
 </section>
 
-<!-- GROUNDS -->
-<h2 class="title">Available Grounds</h2>
-
-<div class="grounds">
-  <div class="card">
-    <img src="images/ground1.jpg">
-    <h3>ABC Cricket Ground</h3>
-    <p>₹500 / hour</p>
-    <button onclick="book()">Book</button>
-  </div>
-
-  <div class="card">
-    <img src="images/ground2.jpg">
-    <h3>City Sports Arena</h3>
-    <p>₹700 / hour</p>
-    <button onclick="book()">Book</button>
-  </div>
-</div>
-
-<script src="script.js"></script>
 </body>
 </html>

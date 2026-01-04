@@ -1,0 +1,138 @@
+
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                      url('stadium.jpg/stadium.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+}
+
+.results-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(5px);
+    margin: 20px;
+    border-radius: 15px;
+    color: white; 
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #fff;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: green;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #333;
+}
+
+.book-btn {
+  background: green;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+
+.home-bg {
+    height: 90vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                      url('stadium.jpg/stadium.jpg'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.search-bg {
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                      url('stadium.jpg/stadium.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+}
+
+.hero span {
+  color: orange;
+}
+
+.search-box {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  display: inline-flex;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.search-box input,
+.search-box select {
+  padding: 8px;
+}
+
+.search-box button {
+  background: darkgreen;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+}
+
+
+.ground-card img {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.book-now {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* style.css లో ఈ భాగాన్ని అప్‌డేట్ చేయండి */
+.results-container {
+    display: flex !important;       /* ఖచ్చితంగా ఫ్లెక్స్ బాక్స్ లా పనిచేయాలి */
+    flex-wrap: wrap;                /* కార్డులు ఒకదాని పక్కన ఒకటి వస్తాయి */
+    justify-content: center;        /* కార్డులను పేజీకి మధ్యలోకి జరుపుతుంది */
+    align-items: center;
+    gap: 30px;                      /* కార్డుల మధ్య గ్యాప్ */
+    padding: 50px 20px;
+    width: 100%;                    /* పేజీ వెడల్పు మొత్తం తీసుకోవాలి */
+    min-height: 80vh;
+}
+
+.ground-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    width: 320px;                   /* కార్డు సైజు */
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    text-align: center;
+    color: #333;
+}
+}
