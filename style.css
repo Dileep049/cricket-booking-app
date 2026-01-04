@@ -114,25 +114,24 @@ nav a {
     margin-top: 10px;
 }
 
-/* style.css లో ఈ భాగాన్ని అప్‌డేట్ చేయండి */
+
 .results-container {
-    display: flex !important;       /* ఖచ్చితంగా ఫ్లెక్స్ బాక్స్ లా పనిచేయాలి */
-    flex-wrap: wrap;                /* కార్డులు ఒకదాని పక్కన ఒకటి వస్తాయి */
-    justify-content: center;        /* కార్డులను పేజీకి మధ్యలోకి జరుపుతుంది */
+    display: flex !important;      
+    flex-wrap: wrap;                
+    justify-content: center;        
     align-items: center;
-    gap: 30px;                      /* కార్డుల మధ్య గ్యాప్ */
+    gap: 30px;                      
     padding: 50px 20px;
-    width: 100%;                    /* పేజీ వెడల్పు మొత్తం తీసుకోవాలి */
+    width: 100%;                  
     min-height: 80vh;
 }
 
 .ground-card {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 15px;
-    width: 320px;                   /* కార్డు సైజు */
+    width: 320px;                   
     padding: 20px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.5);
     text-align: center;
     color: #333;
-}
 }
