@@ -1,7 +1,7 @@
 
 body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                      url('stadium.jpg/stadium.jpg');
+                      url('stadium.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -48,23 +48,23 @@ nav a {
   border-radius: 5px;
 }
 
-.home-bg {
-    height: 90vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                      url('stadium.jpg/stadium.jpg'); 
-    background-size: cover;
-    background-position: center;
+.hero-bg {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('stadium.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: white;
 }
-
-.search-bg {
+.hero-bg {
     min-height: 100vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                      url('stadium.jpg/stadium.jpg'); 
+                      url('stadium.jpg'); 
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
