@@ -135,3 +135,14 @@ nav a {
     text-align: center;
     color: #333;
 }
+
+.hero-bg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 80vh;
+    background: url('stadium.jpg') no-repeat center center/cover;
+    width: 100%;
+}
