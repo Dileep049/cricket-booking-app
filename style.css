@@ -49,26 +49,16 @@ nav a {
 }
 
 .hero-bg {
-    min-height: 100vh;
+    min-height: 100vh; /* Screen motham cover chestundi */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Content ni vertical ga middle ki techundi */
+    align-items: center;     /* Content ni horizontal ga center ki techundi */
     text-align: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('stadium.jpg');
-    background-size: cover;
-    background-position: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('stadium.jpg') no-repeat center center/cover;
     background-attachment: fixed;
     color: white;
-}
-.hero-bg {
-    min-height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                      url('stadium.jpg'); 
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: white;
+    width: 100%;
 }
 
 .hero span {
