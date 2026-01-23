@@ -1,11 +1,14 @@
 
+/* style.css lo Line 1 nundi start chey */
 body {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                      url('stadium.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                      url('stadium.jpg'); 
+    background-size: cover;             
+    background-position: center;         
+    background-repeat: no-repeat;        
+    background-attachment: fixed;        
     margin: 0;
+    min-height: 100vh;
 }
 
 .results-container {
@@ -14,7 +17,7 @@ body {
     align-items: center;
     padding: 50px 20px;
     background: rgba(255, 255, 255, 0.1); 
-    backdrop-filter: blur(5px);
+    backdrop-filter: blue(5px);
     margin: 20px;
     border-radius: 15px;
     color: white; 
@@ -47,36 +50,53 @@ nav a {
   padding: 8px 15px;
   border-radius: 5px;
 }
+/* REMOVE body background-image COMPLETELY */
 
-.hero-bg {
-    min-height: 100vh; /* Screen motham cover chestundi */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Content ni vertical ga middle ki techundi */
-    align-items: center;     /* Content ni horizontal ga center ki techundi */
-    text-align: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('stadium.jpg') no-repeat center center/cover;
-    background-attachment: fixed;
-    color: white;
-    width: 100%;
+.search-bg {
+  min-height: 100vh;
+  width: 100%;
+
+  background-image:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url("stadium.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  color: white;
 }
+
 
 .hero span {
   color: orange;
 }
 
+/* Cancel button hover effect */
+button:hover {
+    background-color: #cc0000 !important;
+    transition: 0.3s;
+}
+
 .search-box {
   background: white;
   padding: 15px;
-  border-radius: 10px;
-  display: inline-flex;
-  gap: 10px;
-  margin-top: 30px;
+  border-radius: 8px;
+  margin-top: 25px;
 }
 
 .search-box input,
-.search-box select {
+.search-box select,
+.search-box button {
   padding: 8px;
+  margin: 5px;
 }
 
 .search-box button {

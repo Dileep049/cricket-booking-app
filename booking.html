@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm Booking</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .booking-container { padding: 20px; max-width: 800px; margin: auto; }
+        .details-form { margin-bottom: 30px; border: 1px solid #eee; padding: 20px; border-radius: 10px; }
+        input, select { margin: 10px 0; padding: 10px; width: 100%; display: block; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background-color: #f9f9f9; }
+        .cancel-btn { background: #ff4d4d; color: white; border: none; padding: 5px 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="booking-container">
+        <h2 id="groundNameDisplay">Stadium Name</h2>
+        
+        <div class="details-form">
+            <input type="text" id="custName" placeholder="Enter Customer Name">
+            <input type="text" id="custPhone" placeholder="Enter Phone Number">
+            <select id="timeSlot">
+                <option>6:00 AM - 9:00 AM</option>
+                <option>4:00 PM - 7:00 PM</option>
+                <option>7:00 PM - 10:00 PM</option>
+            </select>
+            <button onclick="confirmAndSave()" style="padding: 10px 20px; background: green; color: white; border: none; cursor: pointer;">Confirm Booking</button>
+        </div>
+
+        <h3>Live Booking Preview</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Stadium</th>
+                    <th>Time</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Page load ayyaka Stadium Name set cheyadam
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            const gName = params.get('name');
+            if (gName) document.getElementById("groundNameDisplay").innerText = gName;
+        };
+
+        function confirmAndSave() {
+            const name = document.getElementById("custName").value;
+            const phone = document.getElementById("custPhone").value;
+            const time = document.getElementById("timeSlot").value;
+            const stadium = document.getElementById("groundNameDisplay").innerText;
+
+            if (!name || !phone) {
+                alert("Please fill all details!");
+                return;
+            }
+
+            const tableBody = document.getElementById("tableBody");
+            const rowId = "row_" + Date.now();
+
+            // Row and Columns (td) creation
+            const rowHTML = `
+                <tr id="${rowId}">
+                    <td>${name}</td>
+                    <td>${stadium}</td>
+                    <td>${time}</td>
+                    <td>${phone}</td>
+                    <td><button class="cancel-btn" onclick="cancelBooking('${rowId}')">Cancel</button></td>
+                </tr>`;
+
+            tableBody.innerHTML += rowHTML;
+            alert("Booking Successful!");
+
+            // Clear inputs
+            document.getElementById("custName").value = "";
+            document.getElementById("custPhone").value = "";
+        }
+
+        function cancelBooking(id) {
+            if (confirm("Delete this entry?")) {
+                document.getElementById(id).remove();
+            }
+        }
+    </script>
+</body>
+</html>
