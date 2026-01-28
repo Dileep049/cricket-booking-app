@@ -127,34 +127,18 @@
         </div>
  </div>
 
-    <div class="table-container">
-        <h3>Your Recent Bookings</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Customer Name</th>
-                    <th>Stadium</th>
-                    <th>Time Slot</th>
-                    <th>Phone</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody id="tableBody">
-                </tbody>
-        </table>
-    </div>
-
     <script>
-        function openBooking(name) {
-            // Vere page ki velle logic
-            window.location.href = `booking.html?stadium=${name}`;
-        }
+function openBooking(name) {
+    // User select chesina time slot (Udaharanaki 6:00 AM - 9:00 AM)
+    let selectedTime = "6:00 AM - 9:00 AM"; 
+    let slotKey = name + "_" + selectedTime;
 
-        function cancelBooking(btn) {
-            if(confirm("Confirm Cancellation?")) {
-                btn.parentElement.parentElement.remove();
-            }
-        }
+    if (localStorage.getItem(slotKey) === "true") {
+        alert("Sorry! " + name + " for " + selectedTime + " is already booked.");
+    } else {
+        window.location.href = `booking.html?name=${name}&time=${selectedTime}`;
+    }
+}
     </script>
 </body>
 </html>
