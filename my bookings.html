@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; }
+        table { width: 100%; border-collapse: collapse; background: white; margin-top: 20px; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #007bff; color: white; }
+        .container { max-width: 800px; margin: auto; }
+        h2 { text-align: center; color: #333; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>My Cricket Ground Bookings</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Date</th>
+                    <th>Time Slot</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="bookings-list">
+                </tbody>
+        </table>
+    </div>
+
+    <script>
+        async function fetchMyBookings() {
+            try {
+                // Meeru server.js lo create chesina GET route idi
+                const response = await fetch('http://localhost:5000/bookings');
+                const data = await response.json();
+                
+                const list = document.getElementById('bookings-list');
+                list.innerHTML = ""; // Clear loading state
+
+                data.forEach(booking => {
+                    const row = `<tr>
+                        <td>${booking._id}</td>
+                        <td>${new Date(booking.date).toLocaleDateString()}</td>
+                      // Example fix if your database uses startTime/endTime
+                       <td>${booking.startTime || 'N/A'} - ${booking.endTime || 'N/A'}</td>
+                        <td style="color: green; font-weight: bold;">Confirmed ✅</td>
+                    </tr>`;
+                    list.innerHTML += row;
+                });
+            } catch (err) {
+                console.error("Error fetching bookings:", err);
+            }
+        }
+
+        // Page load avvagane function run avvali
+        fetchMyBookings();
+    </script>
+</body>
+</html>
