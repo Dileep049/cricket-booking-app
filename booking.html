@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Select Slot</title>
+    <style>
+        body { font-family: Arial; padding: 20px; text-align: center; }
+        .slot-box { border: 1px solid #28a745; padding: 10px; margin: 10px; display: inline-block; cursor: pointer; border-radius: 5px; }
+        .slot-box:hover { background: #28a745; color: white; }
+    </style>
+</head>
+<body>
+    <h1>Select Booking Details</h1>
+    <input type="date" id="bookingDate">
+    <div id="slots-container">
+        <h3>Available Slots</h3>
+        <div class="slot-box" onclick="confirmBooking('06:00 AM')">06:00 AM - 09:00 AM</div>
+        <div class="slot-box" onclick="confirmBooking('10:00 AM')">10:00 AM - 01:00 AM</div>
+        <div class="slot-box" onclick="confirmBooking('02:00 AM')">02:00 AM - 05:00 PM</div>
+    </div>
+
+   <script>
+async function confirmBooking(time) {
+    const dateInput = document.getElementById('bookingDate').value;
+    const urlParams = new URLSearchParams(window.location.search);
+    const groundId = urlParams.get('groundId');
+    const userId = localStorage.getItem('userID');
+
+    if (!dateInput) return alert("Please select a date first!");
+    if (!userId) return alert("Please login first!");
+
+    const bookingData = {
+        ground: groundId,
+        date: dateInput,
+        startTime: time,
+        endTime: time,
+        user: userId
+    };
+
+    try {
+        const response = await fetch('http://localhost:5000/bookings', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(bookingData)
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            alert("✅ Booking Successful!");
+            window.location.href = "my-bookings.html";
+        } else {
+            const errorResult = await response.json();
+            alert("❌ Error: " + (errorResult.error || errorResult.message));
+        }
+    } catch (err) {
+        console.error("Booking failed:", err);
+        alert("Server is offline. Check terminal!");
+    }
+}
+</script>
+</head>
+</body>

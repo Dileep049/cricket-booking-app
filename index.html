@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cricket Ground Booking</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #1e90ff;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .ground {
+      background: white;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+
+    .ground h3 {
+      margin: 0;
+    }
+
+    .book-btn {
+      margin-top: 10px;
+      padding: 8px 15px;
+      background: green;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .book-btn:disabled {
+      background: gray;
+      cursor: not-allowed;
+    }
+
+    #bookingSection {
+      display: none;
+      background: white;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: white;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background: #1e90ff;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h2>Cricket Ground Booking App</h2>
+</header>
+
+<div class="container">
+
+  <!-- Grounds -->
+  <div class="ground">
+    <h3>Indira Gandhi Stadium</h3>
+    <p>Price: ₹500</p>
+    <button id="btn-indira" class="book-btn"
+      onclick="openBooking('Indira Gandhi Stadium', 500, 'btn-indira')">
+      Book Now
+    </button>
+  </div>
+
+  <div class="ground">
+    <h3>Rajiv Stadium</h3>
+    <p>Price: ₹700</p>
+    <button id="btn-rajiv" class="book-btn"
+      onclick="openBooking('Rajiv Stadium', 700, 'btn-rajiv')">
+      Book Now
+    </button>
+  </div>
+
+  <!-- Booking Form -->
+  <div id="bookingSection">
+    <h3 id="stadiumName"></h3>
+
+    <form onsubmit="addBooking(event)">
+      <input type="text" id="name" placeholder="Customer Name" required>
+      <input type="text" id="phone" placeholder="Phone Number" required>
+      <input type="time" id="time" required>
+      <button class="book-btn" type="submit">Confirm Booking</button>
+    </form>
+  </div>
+
+  <!-- Booking Table -->
+  <table>
+    <thead>
+      <tr>
+        <th>Stadium</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Time</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody id="bookingTable"></tbody>
+  </table>
+
+</div>
+
+<script>
+  // Global variables
+  let selectedStadium = "";
+  let selectedPrice = 0;
+  let selectedButton = "";
+
+  // Book Now click
+  function openBooking(stadium, price, buttonId) {
+    selectedStadium = stadium;
+    selectedPrice = price;
+    selectedButton = buttonId;
+
+    document.getElementById("stadiumName").innerText =
+      "Booking for " + stadium + " (₹" + price + ")";
+
+    document.getElementById("bookingSection").style.display = "block";
+  }
+
+  // Confirm Booking
+  function addBooking(event) {
+    event.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let time = document.getElementById("time").value;
+
+    let row = `
+      <tr>
+        <td>${selectedStadium}</td>
+        <td>${name}</td>
+        <td>${phone}</td>
+        <td>${time}</td>
+        <td>₹${selectedPrice}</td>
+      </tr>
+    `;
+
+    document.getElementById("bookingTable").innerHTML += row;
+
+    // Disable button after booking
+    document.getElementById(selectedButton).disabled = true;
+    document.getElementById(selectedButton).innerText = "Booked";
+
+    // Reset form
+    document.getElementById("bookingSection").style.display = "none";
+    event.target.reset();
+  }
+</script>
+
+</body>
+</html>
