@@ -1,40 +1,55 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>CricBook</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Cricket Booking App</title>
+    
+    <script>
+        // Local storage lo userID lekapothe direct ga login ki pampisthundi
+        if (!localStorage.getItem('userID')) {
+            window.location.href = "login.html";
+        }
+    </script>
+
+    <style>
+        /* Mee patha styles ikkade untayi... */
+        body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+        .container { max-width: 900px; margin: auto; }
+        .ground-card { background: white; padding: 20px; margin-bottom: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .btn { background: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+    </style>
 </head>
 <body>
-
-<header>
-  <div class="logo">🏏 CricBook</div>
-  <nav>
-    <a href="#">Grounds</a>
-    <a href="#">How it Works</a>
-    <a href="#">Contact</a>
-    <button class="book-btn">Book Now</button>
-  </nav>
-</header>
-
-<section class="search-bg">
-  <img src="stadium.jpg" alt="Stadium Background" style="width: 100%;">
-  <h1>Play Cricket at the <span>Best Grounds</span></h1>
-  <p>Discover and book premium cricket grounds near you</p>
-
-  <form action="search_results.html" method="GET">
-    <div class="search-box">
-        <input type="text" placeholder="Enter city" required>
-        <input type="date" required>
-        <select>
-            <option>Morning</option>
-            <option>Afternoon</option>
-            <option>Evening</option>
-        </select>
-        <button type="submit">Search</button>
+    <div class="container">
+        <h1>Available Cricket Grounds</h1>
+        <div id="grounds-container">Loading grounds...</div>
     </div>
-</form>
-</section>
 
+    <script>
+        async function getGrounds() {
+            try {
+                // Backend API nundi data techukuntunnam
+                const response = await fetch('http://localhost:5000/api/grounds/all');
+                const grounds = await response.json();
+                
+                const container = document.getElementById('grounds-container');
+                container.innerHTML = grounds.map(g => `
+                    <div class="ground-card">
+                        <h2>${g.name}</h2>
+                        <p><strong>Location:</strong> ${g.location}</p>
+                        <p><strong>Price:</strong> ₹${g.pricePerHour} / hour</p>
+                        <button class="btn" onclick="goToBooking('${g._id}')">Book Now</button>
+                    </div>
+                `).join('');
+            } catch (err) {
+                console.error("Error fetching grounds:", err);
+            }
+        }
+function goToBooking(id) {
+    window.location.href = `booking.html?groundId=${id}`;
+}
+
+        getGrounds();
+    </script>
 </body>
 </html>
