@@ -4,38 +4,37 @@
     <meta charset="UTF-8">
     <title>Scanner & UPI Payment</title>
     <style>
-        body { background: #0f0f0f; color: white; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-        .pay-card { background: #1e1e1e; padding: 25px; border-radius: 20px; width: 360px; border: 1px solid #76ba1b; text-align: center; }
-        .qr-box { background: white; padding: 15px; border-radius: 12px; margin: 20px auto; width: 180px; height: 180px; }
-        .qr-box img { width: 100%; height: 100%; }
-        .amount-tag { font-size: 26px; font-weight: bold; color: #76ba1b; margin: 10px 0; }
-        .upi-apps { display: flex; justify-content: space-around; margin-top: 25px; }
-        .app-btn { background: #222; border: 1px solid #333; padding: 10px; border-radius: 10px; cursor: pointer; width: 85px; }
-        .app-btn img { width: 35px; display: block; margin: 0 auto 5px; }
-        .btn-done { background: #76ba1b; color: white; padding: 15px; width: 100%; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 25px; }
+        body { background: #0f0f0f; color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .card { background: #1e1e1e; padding: 25px; border-radius: 20px; width: 350px; border: 1px solid #76ba1b; text-align: center; }
+        .qr-box { background: white; padding: 10px; border-radius: 10px; width: 180px; margin: 20px auto; }
+        .qr-box img { width: 100%; }
+        .upi-icons { display: flex; justify-content: space-around; margin: 20px 0; }
+        .upi-icons img { width: 45px; cursor: pointer; border: 1px solid #333; padding: 5px; border-radius: 10px; }
+        .btn-paid { background: #76ba1b; color: white; padding: 15px; width: 100%; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
-    <div class="pay-card">
-        <h3 style="margin:0;">Scan & Pay</h3>
+    <div class="card">
+        <h3>Scan & Pay</h3>
         <div class="qr-box">
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=CricBook-Payment" alt="QR Code">
         </div>
-        <div class="amount-tag" id="displayAmt">₹0</div>
-        <div class="upi-apps">
-            <div class="app-btn" onclick="alert('Opening GPay')"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg"><span>GPay</span></div>
-            <div class="app-btn" onclick="alert('Opening PhonePe')"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/phonepe-logo-icon.png"><span>PhonePe</span></div>
+        <h2 id="amt" style="color:#76ba1b;">₹5000</h2>
+        <div class="upi-icons">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg">
+            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/phonepe-logo-icon.png">
         </div>
-        <button class="btn-done" onclick="finish()">I Have Paid</button>
+        <button class="btn-paid" onclick="completeBooking()">I Have Paid</button>
     </div>
+
     <script>
         const booking = JSON.parse(localStorage.getItem('temp_booking'));
-        if(booking) document.getElementById('displayAmt').innerText = "₹" + booking.price;
+        if(booking) document.getElementById('amt').innerText = "₹" + booking.price;
 
-        function finish() {
+        function completeBooking() {
             const key = booking.name + "_" + booking.slotId + "_" + booking.date;
             localStorage.setItem(key, "1"); // Slot block logic
-            alert("Payment Successful!");
+            alert("Payment Successful! Slot is booked.");
             window.location.href = '../index.html'; 
         }
     </script>

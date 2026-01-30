@@ -47,32 +47,32 @@
     <script>
         // Retrieve data from localStorage
         const bookingData = JSON.parse(localStorage.getItem('temp_booking'));
+// Variable names sarriga match avvali
+function showPaymentSummary() {
+    const name = document.getElementById('custName').value;
+    const phone = document.getElementById('custPhone').value;
 
-        function showPaymentSummary() {
-            const name = document.getElementById('custName').value;
-            const phone = document.getElementById('custPhone').value;
+    if(!name || !phone) {
+        alert("Please enter your details!");
+        return;
+    }
 
-            if(!name || !phone) {
-                alert("Please enter your details!");
-                return;
-            }
+    // UI ni marchadam
+    document.getElementById('detailsStep').style.display = 'none';
+    document.getElementById('paymentStep').style.display = 'block';
 
-            // UI ni marchadam
-            document.getElementById('detailsStep').style.display = 'none';
-            document.getElementById('paymentStep').style.display = 'block';
+    // Data load cheyadam - Variable names check cheyandi
+    document.getElementById('summaryImg').src = bookingData.img;
+    document.getElementById('sName').innerText = bookingData.name || "Stadium Name";
+    document.getElementById('sOwner').innerText = bookingData.owner || "VVS Laxman"; // Meeru pampina image batti
+    document.getElementById('sPhone').innerText = "+91 " + (bookingData.phone || "7654321098");
+    document.getElementById('sCust').innerText = name;
+    document.getElementById('sSlot').innerText = bookingData.slotLabel;
+    document.getElementById('sPrice').innerText = "₹" + bookingData.price;
+}
 
-            // Details ni fill cheyadam
-            document.getElementById('summaryImg').src = bookingData.img;
-            document.getElementById('sName').innerText = bookingData.name;
-            document.getElementById('sOwner').innerText = bookingData.owner;
-            document.getElementById('sPhone').innerText = "+91 " + bookingData.phone;
-            document.getElementById('sCust').innerText = name;
-            document.getElementById('sSlot').innerText = bookingData.slotLabel;
-            document.getElementById('sPrice').innerText = "₹" + bookingData.price;
-        }
-
-        function confirmPayment() {
-    // Ikkada kotha payment page address ivvali
+// Next page ki redirect chese function
+function confirmPayment() {
     window.location.href = 'payment_method.html';
 }
         
