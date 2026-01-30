@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Details</title>
+    <style>
+        body { background: #0f0f0f; color: white; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .card { background: #1e1e1e; padding: 30px; border-radius: 20px; width: 380px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .stadium-img { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; margin-bottom: 20px; }
+        .info-row { display: flex; justify-content: space-between; margin: 10px 0; border-bottom: 1px solid #222; padding-bottom: 5px; font-size: 14px; }
+        .label { color: #bbb; }
+        .value { color: #76ba1b; font-weight: bold; }
+        input { width: 90%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #444; background: #222; color: white; }
+        .btn-confirm { background: #76ba1b; color: white; padding: 15px; width: 100%; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 20px; font-size: 16px; }
+        #paymentStep { display: none; text-align: center; } /* Modalata idi hide ayyi untundi */
+    </style>
+</head>
+<body>
+    <div class="card" id="detailsStep">
+        <h2 style="color:#76ba1b; margin-top:0;">Your Details</h2>
+        <input type="text" id="custName" placeholder="Enter Your Full Name">
+        <input type="text" id="custPhone" placeholder="Enter Your Mobile Number">
+        <button class="btn-confirm" onclick="showPaymentSummary()">Finalize Booking</button>
+    </div>
+
+    <div class="card" id="paymentStep">
+        <h2 style="color:#76ba1b; margin-top:0;">Payment Summary</h2>
+        <img id="summaryImg" class="stadium-img" src="">
+        
+        <div style="text-align: left;">
+            <div class="info-row"><span class="label">Ground:</span> <span class="value" id="sName"></span></div>
+            <div class="info-row"><span class="label">Owner:</span> <span class="value" id="sOwner"></span></div>
+            <div class="info-row"><span class="label">Contact:</span> <span class="value" id="sPhone"></span></div>
+            <div class="info-row"><span class="label">Customer:</span> <span class="value" id="sCust"></span></div>
+            <div class="info-row"><span class="label">Slot:</span> <span class="value" id="sSlot"></span></div>
+        </div>
+
+        <div style="background: #111; padding: 15px; border-radius: 10px; margin-top: 15px;">
+            <div style="display:flex; justify-content:space-between; font-size:18px;">
+                <span>Total:</span><span class="value" id="sPrice"></span>
+            </div>
+        </div>
+
+        <button class="btn-confirm" onclick="confirmPayment()">Confirm Payment</button>
+    </div>
+
+    <script>
+        // Retrieve data from localStorage
+        const bookingData = JSON.parse(localStorage.getItem('temp_booking'));
+
+        function showPaymentSummary() {
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+
+            if(!name || !phone) {
+                alert("Please enter your details!");
+                return;
+            }
+
+            // UI ni marchadam
+            document.getElementById('detailsStep').style.display = 'none';
+            document.getElementById('paymentStep').style.display = 'block';
+
+            // Details ni fill cheyadam
+            document.getElementById('summaryImg').src = bookingData.img;
+            document.getElementById('sName').innerText = bookingData.name;
+            document.getElementById('sOwner').innerText = bookingData.owner;
+            document.getElementById('sPhone').innerText = "+91 " + bookingData.phone;
+            document.getElementById('sCust').innerText = name;
+            document.getElementById('sSlot').innerText = bookingData.slotLabel;
+            document.getElementById('sPrice').innerText = "₹" + bookingData.price;
+        }
+
+        function confirmPayment() {
+    // Ikkada kotha payment page address ivvali
+    window.location.href = 'payment_method.html';
+}
+        
+    </script>
+</body>
+</html>
